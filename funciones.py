@@ -1,5 +1,6 @@
 import mysql.connector
 
+
 from usuarios import Usuario
 
 def pedirNumeroEntero():
@@ -7,28 +8,18 @@ def pedirNumeroEntero():
     num=0
     while(not correcto):
         try:
-            num = int(input("Introduce un numero entero: "))
+            num = int(input("Introduce un numero ---> "))
             correcto=True
         except ValueError:
-            print('Error, introduce un numero entero')
+            print('Error, introduce un numero')
     return num
 
-def crearUsuario(email1):
-    idusuario = email1
-    clave = (input("Ingrese Clave de Ingreso ---> "))
-    nombre = (input("Ingrese Nombre ---> "))
-    apellido = (input("Ingrese Apellido ---> "))
-    estado = 1
-    fechaNacimiento = (input("Ingrese Fecha Nacimiento AAAA-MM-DD ---> "))
-    celular = (input("Ingrese número celular ---> "))
-    us = Usuario(idusuario,clave,nombre,apellido,estado,fechaNacimiento,celular)
-    print(us.idusuario)
-    print(us.clave)
-    print(us.nombre)
-    print(us.apellido)
-    print(us.estado)
-    print(us.fechanacimiento)
-    print(us.celular)
+def conexionDB():
+    try:
+        conexion = mysql.connector.connect(host='localhost', user='root',password='20205701*', db='cinepython')
+        return conexion
+    except (mysql.err.OperationalError, mysql.err.InternalError) as e: print("Ocurrió un error al conectar: ", e)
+    
 
 def agregarCliente():
             print("*************************************************")
@@ -44,10 +35,10 @@ def agregarCliente():
                 print("*************************************************")
                 email = input("---> ")
                 existe = validarCliente(email)
-            return email        
+            return email  
 
 def validarCliente(email):
-            conexion = mysql.connector.connect(host='localhost', user='root',password='20205701*', db='cinepython')
+            conexion = conexionDB()
             with conexion.cursor() as cursor:
                 consulta = "SELECT IdUsuario FROM usuarios"
                 cursor.execute(consulta)
@@ -58,4 +49,3 @@ def validarCliente(email):
                         return True
             conexion.close()
             return False
-            

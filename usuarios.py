@@ -1,4 +1,4 @@
-
+import mysql.connector
 
 class Usuario:
     def __init__(self, IdUsuario, clave, Nombre, Apellido, Estado, FechaNacimiento, Celular):
@@ -55,3 +55,29 @@ class Usuario:
     def celular(self, Celular):
             self.__Celular = Celular
 
+def crearUsuario(email1):
+    idusuario = (email1)
+    clave = (input("Ingrese Clave de Ingreso ---> "))
+    nombre = (input("Ingrese Nombre ---> "))
+    apellido = (input("Ingrese Apellido ---> "))
+    estado = 1
+    fechaNacimiento = (input("Ingrese Fecha Nacimiento AAAA-MM-DD ---> "))
+    celular = (input("Ingrese número celular ---> "))
+    us = Usuario(idusuario,clave,nombre,apellido,estado,fechaNacimiento,celular)
+    print(f"Usuario ---> {us.idusuario} ")
+    print(f"Clave Personal ---> {us.clave}")
+    print(f"Nombre ---> {us.nombre}")
+    print(f"Apellido ---> {us.apellido}")
+    print(f"Estado ---> {us.estado}")
+    print(f"Fecha Nacimiento ---> {us.fechanacimiento}")
+    print(f"Celular ---> {us.celular}")
+    return us
+
+def agregarDB(conn,idusuario, clave, nombre, apellido, estado, fechanacimiento, celular):
+    conexion = conn
+    with conexion.cursor() as cursor:
+        consulta = "INSERT INTO usuarios (IdUsuario, clave, Nombre, Apellido, Estado, FechaNacimiento, Celular) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+        cursor.execute(consulta, (idusuario, clave, nombre, apellido, estado, fechanacimiento, celular))
+        conexion.commit()
+        conexion.close()
+    print("****  SE REGISTRO CORRECTAMENTE ***")
