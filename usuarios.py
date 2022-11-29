@@ -1,5 +1,7 @@
 import mysql.connector
 
+from vistas import mostrarUsuarios
+
 class Usuario:
     def __init__(self, IdUsuario, clave, Nombre, Apellido, Estado, FechaNacimiento, Celular):
         self.__IdUsuario = IdUsuario
@@ -81,3 +83,12 @@ def agregarDB(conn,idusuario, clave, nombre, apellido, estado, fechanacimiento, 
         conexion.commit()
         conexion.close()
     print("****  SE REGISTRO CORRECTAMENTE ***")
+    
+def verUsuarios(conn):
+    conexion = conn
+    with conexion.cursor() as cursor:
+        consulta = "SELECT * FROM usuarios;"
+        cursor.execute(consulta)
+        usuarios = cursor.fetchall()
+        mostrarUsuarios(usuarios)
+        conexion.close()

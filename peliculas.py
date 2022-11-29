@@ -67,3 +67,27 @@ def verPeliculas(conn):
         cursor.execute(consulta)
         peliculas = cursor.fetchall()
         mostrarPeliculas(peliculas)
+        
+def agregarPelicula():
+    print("Ingrese el Título de la Película")
+    titulo = input()
+    print("Ingrese el Director")
+    director = input() 
+    print("Ingrese Descripción")
+    descripcion = input()
+    print("Ingrese Género")
+    genero = input()
+    print("Ingrese duración")
+    duración = input()
+    us = Peliculas(1,titulo, director, descripcion, genero, duración,1)
+    return us
+
+def agregarDbPelicula(conn, titulo, director, descripcion, genero, duracion ):
+    conexion = conn
+    with conexion.cursor() as cursor:
+        consulta = "INSERT INTO peliculas (Titulo, Director, Descripcion, Genero, Duracion, Estado) VALUES (%s, %s, %s, %s, %s, %s);"
+        cursor.execute(consulta, (titulo, director, descripcion, genero, duracion, 1))
+        conexion.commit()
+        conexion.close()
+    print("****  SE REGISTRO CORRECTAMENTE ***")
+    

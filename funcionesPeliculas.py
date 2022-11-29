@@ -62,7 +62,7 @@ def crearFunciones():
     print("*************************************************")
     idSala = int(input())
     print("*************************************************")
-    print("Ingrese Número de la Pelicula (1 a 13 ---> ")
+    print("Ingrese Número de la Pelicula (1 a 15 ---> ")
     print("*************************************************")
     idPelicula = int(input())
     print("*************************************************")
@@ -70,7 +70,7 @@ def crearFunciones():
     print("*************************************************")
     horario = input()
     print("*************************************************")
-    print("Ingrese Fecha de la Función (AA-MM-DD) ---> ");
+    print("Ingrese Fecha de la Función (AAAA-MM-DD) ---> ");
     print("*************************************************")
     fecha = input()
     estado = 1
@@ -90,3 +90,6 @@ def agregarDbFunciones(conn, idfuncion, idSala, idPelicula, horario, fecha, esta
         conexion.commit()
         conexion.close()
     print("****  SE REGISTRO CORRECTAMENTE ***")
+
+
+    

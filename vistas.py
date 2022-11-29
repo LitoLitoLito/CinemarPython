@@ -24,10 +24,11 @@ def administrar():
         print('--------------------------------------')
         print('1.- Crear Salas')
         print('2.- Crear Funciones')
-        print('3.- Agregar y/o eliminar Películas')
-        print('4.- Ver Peliculas')
-        print('5.- Ver Clientes Registrados')
-        print('6.- Salir')
+        print('3.- Agregar Películas')
+        print('4.- Eliminar Películas')
+        print('5.- Ver Peliculas')
+        print('6.- Ver Clientes Registrados')
+        print('7.- Salir')
         print('--------------------------------------')
 
 def administrador():
@@ -52,6 +53,30 @@ def mostrarPeliculas(peliculas):
                 print(f"Género ---> {lst[i][4]}")
                 print(f"Duración ---> {lst[i][5]}")
                 print(f"Estado ---> {lst[i][6]}")
+                print("------------------------------------")
+                print("------------------------------------")
+                print("------------------------------------")
+
+def peliculas():
+        print("------------------------------------")
+        print("    AGREGAR PELICULA Y DETALLES     ")
+        print("------------------------------------")
+
+        
+def mostrarUsuarios(usuarios):
+        print("------------------------------------")
+        print("   LISTA DE CLIENTES REGISTRADOS    ")
+        print("------------------------------------")
+        lst = list(map(list,usuarios))
+        for i in range(len(lst)):
+                print("------------------------------------")
+                print(f"Id de Cliente ---> {lst[i][0]}")
+                print(f"Clave de Acceso ---> {lst[i][1]}")
+                print(f"Nombre ---> {lst[i][2]}")
+                print(f"Apellido ---> {lst[i][3]}")
+                print(f"Estado ---> {lst[i][4]}")
+                print(f"Fecha de Nacimiento ---> {lst[i][5]}")
+                print(f"Celular ---> {lst[i][6]}")
                 print("------------------------------------")
                 print("------------------------------------")
                 print("------------------------------------")
