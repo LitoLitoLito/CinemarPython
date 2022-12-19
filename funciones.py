@@ -37,15 +37,17 @@ def agregarCliente():
                 existe = validarCliente(email)
             return email  
 
-def validarCliente(email):
+def validarCliente():
             conexion = conexionDB()
             with conexion.cursor() as cursor:
                 consulta = "SELECT IdUsuario FROM usuarios"
                 cursor.execute(consulta)
                 record = cursor.fetchall()
                 for i in range(len(record)):
-                    if record [i] [0] == email:
+                    if record [i] [0] == nombreusuario_entry:
                         conexion.close()
+                        print("True - True - True ")
                         return True
             conexion.close()
+            print("False - False - False ")
             return False

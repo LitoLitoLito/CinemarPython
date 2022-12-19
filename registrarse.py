@@ -4,7 +4,7 @@ import tkinter.font as tkFont
 
 from funciones import agregarCliente, conexionDB
 from usuarios import agregarDB, crearUsuario
-from vistas import administrador, administrar
+from vistas import administrador, administrar, menuInicio
 
 class App:
     def __init__(self, root):
@@ -89,10 +89,14 @@ class App:
         print("command EXITOSO")
     
     def reservarFuncion(self):
-        pass
+        system("cls")
+        print ("Opcion 2")
+        menuInicio()
     
     def verFunciones(self):
-        pass
+        system("cls")
+        print("Ver CARTELERA 3")
+        menuInicio()
     
     def administrador(self):
         system("cls")
